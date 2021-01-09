@@ -11,7 +11,7 @@ const authMiddleware = async (req, res, next) => {
     const jwtToken = header.replace("Bearer ", "");
     const decodedToken = jwt.decode(jwtToken, process.env.JWT_SECRET);
     const userFormToken = await User.findOne({
-      _id: decodedToken?._id,
+      _id: decodedToken._id,
       "tokens.token": jwtToken,
     });
 
